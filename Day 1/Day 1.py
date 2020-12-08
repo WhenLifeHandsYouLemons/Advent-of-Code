@@ -1,6 +1,7 @@
 """
 Advent of Code: Day 1
 """
+
 all_numbers = []
 total = 0
 multiply_total = 0
@@ -11,7 +12,7 @@ pos1 = 0
 pos2 = 0
 pos3 = 0
 
-with open("C:/Users/2005s/Documents/Visual Studio Code/Advent-of-Code-2020/Day 1 Resources.txt", "r") as f:
+with open("C:/Users/2005s/Documents/Visual Studio Code/Advent-of-Code-2020/Day 1/Day 1 Resources.txt", "r") as f:
     content = f.read()
     lines = content.splitlines()
     for line in lines:
@@ -51,4 +52,4 @@ while total != 2020:
             pos3 = 0
 
 multiply_total = num1 * num2 * num3
-print(f"The product of those three numbers is {multiply_total}")
+print(f"The product of those three numbers is {multiply_total}!")
