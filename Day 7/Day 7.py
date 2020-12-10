@@ -40,6 +40,7 @@ while line_no != len(all_lines):
         spliting = spliting[0] + spliting[1]
         #spliting = spliting[0].join(spliting[1])
         print(f"This is what is spliting {spliting}")
+        not_checked.append(spliting)
         all_lines.pop(line_no)
 
     line_no = line_no + 1
