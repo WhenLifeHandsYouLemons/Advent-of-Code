@@ -37,7 +37,8 @@ while line_no != len(all_lines):
         print(f"'{all_lines[line_no]}'")
         spliting = all_lines[line_no].split(" ")
         print(f"This is what is spliting {spliting}")
-        spliting = spliting[0].join(spliting[1])
+        spliting = spliting[0] + spliting[1]
+        #spliting = spliting[0].join(spliting[1])
         print(f"This is what is spliting {spliting}")
         all_lines.pop(line_no)
 
