@@ -53,6 +53,7 @@ print(all_groups)
 line_no = 0
 while line_no != len(all_groups):
     current_group = all_groups[line_no]
+    
     letter_a = 0
     letter_b = 0
     letter_c = 0
@@ -80,86 +81,196 @@ while line_no != len(all_groups):
     letter_y = 0
     letter_z = 0
     count = 0
+    number_of_spaces = 0
 
     for letter in current_group:
         if letter == "a":
-            if letter_a == 0:
-                letter_a = 1
+            letter_a = letter_a + 1
         elif letter == "b":
-            if letter_b == 0:
-                letter_b = 1
+            letter_b = letter_b + 1
         elif letter == "c":
-            if letter_c == 0:
-                letter_c = 1
+            letter_c = letter_c + 1
         elif letter == "d":
-            if letter_d == 0:
-                letter_d = 1
+            letter_d = letter_d + 1
         elif letter == "e":
-            if letter_e == 0:
-                letter_e = 1
+            letter_e = letter_e + 1
         elif letter == "f":
-            if letter_f == 0:
-                letter_f = 1
+            letter_f = letter_f + 1
         elif letter == "g":
-            if letter_g == 0:
-                letter_g = 1
+            letter_g = letter_g + 1
         elif letter == "h":
-            if letter_h == 0:
-                letter_h = 1
+            letter_h = letter_h + 1
         elif letter == "i":
-            if letter_i == 0:
-                letter_i = 1
+            letter_i = letter_i + 1
         elif letter == "j":
-            if letter_j == 0:
-                letter_j = 1
+            letter_j = letter_j + 1
         elif letter == "k":
-            if letter_k == 0:
-                letter_k = 1
+            letter_k = letter_k + 1
         elif letter == "l":
-            if letter_l == 0:
-                letter_l = 1
+            letter_l = letter_l + 1
         elif letter == "m":
-            if letter_m == 0:
-                letter_m = 1
+            letter_m = letter_m + 1
         elif letter == "n":
-            if letter_n == 0:
-                letter_n = 1
+            letter_n = letter_n + 1
         elif letter == "o":
-            if letter_o == 0:
-                letter_o = 1
+            letter_o = letter_o + 1
         elif letter == "p":
-            if letter_p == 0:
-                letter_p = 1
+            letter_p = letter_p + 1
         elif letter == "q":
-            if letter_q == 0:
-                letter_q = 1
+            letter_q = letter_q + 1
         elif letter == "r":
-            if letter_r == 0:
-                letter_r = 1
+            letter_r = letter_r + 1
         elif letter == "s":
-            if letter_s == 0:
-                letter_s = 1
+            letter_s = letter_s + 1
         elif letter == "t":
-            if letter_t == 0:
-                letter_t = 1
+            letter_t = letter_t + 1
         elif letter == "u":
-            if letter_u == 0:
-                letter_u = 1
+            letter_u = letter_u + 1
         elif letter == "v":
-            if letter_v == 0:
-                letter_v = 1
+            letter_v = letter_v + 1
         elif letter == "w":
-            if letter_w == 0:
-                letter_w = 1
+            letter_w = letter_w + 1
         elif letter == "x":
-            if letter_x == 0:
-                letter_x = 1
+            letter_x = letter_x + 1
         elif letter == "y":
-            if letter_y == 0:
-                letter_y = 1
+            letter_y = letter_y + 1
         elif letter == "z":
-            if letter_z == 0:
-                letter_z = 1
+            letter_z = letter_z + 1
+        elif letter == " ":
+            number_of_spaces = number_of_spaces + 1
+
+    number_of_spaces = number_of_spaces + 1
+    print(f"Number of spaces: {number_of_spaces}")
+
+    if letter_a != number_of_spaces:
+        letter_a = 0
+    else:
+        letter_a = 1
+
+    if letter_b != number_of_spaces:
+        letter_b = 0
+    else:
+        letter_b = 1
+
+    if letter_c != number_of_spaces:
+        letter_c = 0
+    else:
+        letter_c = 1
+
+    if letter_d != number_of_spaces:
+        letter_d = 0
+    else:
+        letter_d = 1
+
+    if letter_e != number_of_spaces:
+        letter_e = 0
+    else:
+        letter_e = 1
+
+    if letter_f != number_of_spaces:
+        letter_f = 0
+    else:
+        letter_f = 1
+
+    if letter_g != number_of_spaces:
+        letter_g = 0
+    else:
+        letter_g = 1
+
+    if letter_h != number_of_spaces:
+        letter_h = 0
+    else:
+        letter_h = 1
+
+    if letter_i != number_of_spaces:
+        letter_i = 0
+    else:
+        letter_i = 1
+
+    if letter_j != number_of_spaces:
+        letter_j = 0
+    else:
+        letter_j = 1
+
+    if letter_k != number_of_spaces:
+        letter_k = 0
+    else:
+        letter_k = 1
+
+    if letter_l != number_of_spaces:
+        letter_l = 0
+    else:
+        letter_l = 1
+
+    if letter_m != number_of_spaces:
+        letter_m = 0
+    else:
+        letter_m = 1
+
+    if letter_n != number_of_spaces:
+        letter_n = 0
+    else:
+        letter_n = 1
+
+    if letter_o != number_of_spaces:
+        letter_o = 0
+    else:
+        letter_o = 1
+
+    if letter_p != number_of_spaces:
+        letter_p = 0
+    else:
+        letter_p = 1
+
+    if letter_q != number_of_spaces:
+        letter_q = 0
+    else:
+        letter_q = 1
+
+    if letter_r != number_of_spaces:
+        letter_r = 0
+    else:
+        letter_r = 1
+
+    if letter_s != number_of_spaces:
+        letter_s = 0
+    else:
+        letter_s = 1
+
+    if letter_t != number_of_spaces:
+        letter_t = 0
+    else:
+        letter_t = 1
+
+    if letter_u != number_of_spaces:
+        letter_u = 0
+    else:
+        letter_u = 1
+
+    if letter_v != number_of_spaces:
+        letter_v = 0
+    else:
+        letter_v = 1
+
+    if letter_w != number_of_spaces:
+        letter_w = 0
+    else:
+        letter_w = 1
+
+    if letter_x != number_of_spaces:
+        letter_x = 0
+    else:
+        letter_x = 1
+
+    if letter_y != number_of_spaces:
+        letter_y = 0
+    else:
+        letter_y = 1
+
+    if letter_z != number_of_spaces:
+        letter_z = 0
+    else:
+        letter_z = 1
 
     count = letter_a + letter_b + letter_c + letter_d + letter_e + letter_f + letter_g + letter_h + letter_i + letter_j + letter_k + letter_l + letter_m + letter_n + letter_o + letter_p + letter_q + letter_r + letter_s + letter_t + letter_u + letter_v + letter_w + letter_x + letter_y + letter_z
     total_count = total_count + count
