@@ -9,6 +9,8 @@ line_no = 0
 checked = []
 not_checked = []
 
+all_lines_that_need_check = []
+
 with open("C:/Users/2005s/Documents/Visual Studio Code/Advent-of-Code-2020/Day 7/Day 7 Resources.txt", "r") as f:
     content = f.read()
     lines = content.splitlines()
@@ -30,6 +32,13 @@ with open("C:/Users/2005s/Documents/Visual Studio Code/Advent-of-Code-2020/Day 7
         checked.append(line)
 print(checked)
 
+with open("C:/Users/2005s/Documents/Visual Studio Code/Advent-of-Code-2020/Day 7/need_to_check.txt", "r") as f:
+    content = f.read()
+    lines = content.splitlines()
+    for line in lines:
+        all_lines_that_need_check.append(line)
+print(all_lines_that_need_check)
+
 spliting = []
 
 print("")
@@ -47,16 +56,17 @@ while continuing == True:
 
         try:
             if f"{not_checked[0]} bags contain" in current_line:
-                line_no = line_no + 1
-            elif f"{not_checked[0]}" in current_line:
+                all_lines_that_need_check.append(all_lines[line_no])
                 print(f"There is a {not_checked[0]} bag in line {line_no + 1}.")
                 print(f"'{all_lines[line_no]}'")
                 spliting = all_lines[line_no].split(" ")
                 print(f"This is what is spliting {spliting}")
-                spliting = spliting[0] + " " + spliting[1]
+                spliting = spliting[5] + " " + spliting[6]
                 print(f"This is what is spliting {spliting}")
                 not_checked.append(spliting)
                 all_lines.pop(line_no)
+            elif f"{not_checked[0]}" in current_line:
+                line_no = line_no + 1
             else:
                 line_no = line_no + 1
         except IndexError:
@@ -65,6 +75,13 @@ while continuing == True:
             print("The program has found no other matches!")
             line_no = len(all_lines)
             continuing = False
+
+    # if "other bags" in all_lines_that_need_check[-1]:
+    #     all_lines_that_need_check.pop(-1)
+    print(f"This is all the lines that need to check {all_lines_that_need_check}")
+    save = "\n".join(all_lines_that_need_check)
+    with open("C:/Users/2005s/Documents/Visual Studio Code/Advent-of-Code-2020/Day 7/need_to_check.txt", "w") as f:
+        f.write(save)
 
     if not_checked != []:
         checked.append(not_checked[0])
