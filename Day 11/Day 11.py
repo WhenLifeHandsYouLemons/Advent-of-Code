@@ -4,7 +4,7 @@ Advent of Code: Day 11
 
 all_lines = []
 
-with open("C:/Users/2005s/Documents/Visual Studio Code/Advent-of-Code-2020/Day 3/Day 3 Resources.txt", "r") as f:
+with open("C:/Users/2005s/Documents/Visual Studio Code/Advent-of-Code-2020/Day 11/Day 11 Resources.txt", "r") as f:
     content = f.read()
     lines = content.splitlines()
     for line in lines:
