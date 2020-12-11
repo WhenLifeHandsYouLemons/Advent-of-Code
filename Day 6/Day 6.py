@@ -1,5 +1,5 @@
 """
-# Advent of Code: Day 6
+Advent of Code: Day 6
 """
 
 all_groups = []

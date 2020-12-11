@@ -1,5 +1,5 @@
 """
-# Advent of Code: Day 7
+Advent of Code: Day 7
 """
 
 all_lines = []
