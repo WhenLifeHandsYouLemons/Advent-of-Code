@@ -11,14 +11,16 @@ west = "W"
 right = "R"
 left = "L"
 forward = "F"
-starting_direction = east
-current_direction = starting_direction
+waypoint_position_leftright = 10
+waypoint_position_updown = 1
+current_direction = east
 current_line = ""
 split_current_line = []
 current_direction_need = ""
 current_number = 0
 current_position_leftright = 0
 current_position_updown = 0
+temp = 0
 
 with open("C:/Users/2005s/Documents/Visual Studio Code/Advent-of-Code-2020/Day 12/Day 12 Resources.txt", "r") as f:
     content = f.read()
@@ -39,159 +41,208 @@ while line_no != len(all_lines):
     current_number = int("".join(split_current_line))
     print(split_current_line, current_direction_need, current_number)
 
-    # If ship is facing east
-    if current_direction == east:
+    # If waypoint is top left
+    if waypoint_position_leftright <= 0 and waypoint_position_updown >= 0:
         # If command is turn left
         if current_direction_need == left:
             # If turn is 90 degrees
             if current_number == 90:
-                current_direction = north
-                print("Current direction is North")
+                temp = waypoint_position_leftright
+                waypoint_position_leftright = waypoint_position_updown * -1
+                waypoint_position_updown = temp
+                temp = 0
+                print(f"The waypoint turned left 90 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
             # If turn is 180 degrees
             elif current_number == 180:
-                current_direction = west
-                print("Current direction is West")
+                waypoint_position_leftright = waypoint_position_leftright * -1
+                waypoint_position_updown = waypoint_position_updown * -1
+                print(f"The waypoint turned left 180 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
             # If turn is 270 degrees
             elif current_number == 270:
-                current_direction = south
-                print("Current direction is South")
+                temp = waypoint_position_leftright * -1
+                waypoint_position_leftright = waypoint_position_updown
+                waypoint_position_updown = temp
+                temp = 0
+                print(f"The waypoint turned left 270 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
         # If command is turn right
         elif current_direction_need == right:
             # If turn is 90 degrees
             if current_number == 90:
-                current_direction = south
-                print("Current direction is South")
+                temp = waypoint_position_leftright * -1
+                waypoint_position_leftright = waypoint_position_updown
+                waypoint_position_updown = temp
+                temp = 0
+                print(f"The waypoint turned right 90 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
             # If turn is 180 degrees
             elif current_number == 180:
-                current_direction = west
-                print("Current direction is West")
+                waypoint_position_leftright = waypoint_position_leftright * -1
+                waypoint_position_updown = waypoint_position_updown * -1
+                print(f"The waypoint turned right 180 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
             # If turn is 270 degrees
             elif current_number == 270:
-                current_direction = north
-                print("Current direction is North")
-        # If command is go forward
-        elif current_direction_need == forward:
-            current_position_leftright = current_position_leftright + current_number
-            print(f"Ship went forward to {current_position_leftright}")
-    # If ship is facing west
-    elif current_direction == west:
+                temp = waypoint_position_leftright
+                waypoint_position_leftright = waypoint_position_updown * -1
+                waypoint_position_updown = temp
+                temp = 0
+                print(f"The waypoint turned right 270 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
+    # If waypoint is top right
+    elif waypoint_position_leftright >= 0 and waypoint_position_updown >= 0:
         # If command is turn left
         if current_direction_need == left:
             # If turn is 90 degrees
             if current_number == 90:
-                current_direction = south
-                print("Current direction is South")
+                temp = waypoint_position_leftright
+                waypoint_position_leftright = waypoint_position_updown * -1
+                waypoint_position_updown = temp
+                temp = 0
+                print(f"The waypoint turned left 90 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
             # If turn is 180 degrees
             elif current_number == 180:
-                current_direction = east
-                print("Current direction is East")
+                waypoint_position_leftright = waypoint_position_leftright * -1
+                waypoint_position_updown = waypoint_position_updown * -1
+                print(f"The waypoint turned left 180 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
             # If turn is 270 degrees
             elif current_number == 270:
-                current_direction = north
-                print("Current direction is North")
+                temp = waypoint_position_leftright * -1
+                waypoint_position_leftright = waypoint_position_updown
+                waypoint_position_updown = temp
+                temp = 0
+                print(f"The waypoint turned left 270 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
         # If command is turn right
         elif current_direction_need == right:
             # If turn is 90 degrees
             if current_number == 90:
-                current_direction = north
-                print("Current direction is North")
+                temp = waypoint_position_leftright * -1
+                waypoint_position_leftright = waypoint_position_updown
+                waypoint_position_updown = temp
+                temp = 0
+                print(f"The waypoint turned right 90 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
             # If turn is 180 degrees
             elif current_number == 180:
-                current_direction = east
-                print("Current direction is East")
+                waypoint_position_leftright = waypoint_position_leftright * -1
+                waypoint_position_updown = waypoint_position_updown * -1
+                print(f"The waypoint turned right 180 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
             # If turn is 270 degrees
             elif current_number == 270:
-                current_direction = south
-                print("Current direction is South")
-        # If command is go forward
-        elif current_direction_need == forward:
-            current_position_leftright = current_position_leftright - current_number
-            print(f"Ship went forward to {current_position_leftright}")
-    # If ship is facing north
-    elif current_direction == north:
+                temp = waypoint_position_leftright
+                waypoint_position_leftright = waypoint_position_updown * -1
+                waypoint_position_updown = temp
+                temp = 0
+                print(f"The waypoint turned right 270 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
+    # If waypoint is bottom left
+    elif waypoint_position_leftright <= 0 and waypoint_position_updown <= 0:
         # If command is turn left
         if current_direction_need == left:
             # If turn is 90 degrees
             if current_number == 90:
-                current_direction = west
-                print("Current direction is West")
+                temp = waypoint_position_leftright
+                waypoint_position_leftright = waypoint_position_updown * -1
+                waypoint_position_updown = temp
+                temp = 0
+                print(f"The waypoint turned left 90 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
             # If turn is 180 degrees
             elif current_number == 180:
-                current_direction = south
-                print("Current direction is South")
+                waypoint_position_leftright = waypoint_position_leftright * -1
+                waypoint_position_updown = waypoint_position_updown * -1
+                print(f"The waypoint turned left 180 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
             # If turn is 270 degrees
             elif current_number == 270:
-                current_direction = east
-                print("Current direction is East")
+                temp = waypoint_position_leftright * -1
+                waypoint_position_leftright = waypoint_position_updown
+                waypoint_position_updown = temp
+                temp = 0
+                print(f"The waypoint turned left 270 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
         # If command is turn right
         elif current_direction_need == right:
             # If turn is 90 degrees
             if current_number == 90:
-                current_direction = east
-                print("Current direction is East")
+                temp = waypoint_position_leftright * -1
+                waypoint_position_leftright = waypoint_position_updown
+                waypoint_position_updown = temp
+                temp = 0
+                print(f"The waypoint turned right 90 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
             # If turn is 180 degrees
             elif current_number == 180:
-                current_direction = south
-                print("Current direction is South")
+                waypoint_position_leftright = waypoint_position_leftright * -1
+                waypoint_position_updown = waypoint_position_updown * -1
+                print(f"The waypoint turned right 180 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
             # If turn is 270 degrees
             elif current_number == 270:
-                current_direction = west
-                print("Current direction is West")
-        # If command is go forward
-        elif current_direction_need == forward:
-            current_position_updown = current_position_updown + current_number
-            print(f"Ship went forward to {current_position_updown}")
-    # If ship is facing south
-    elif current_direction == south:
+                temp = waypoint_position_leftright
+                waypoint_position_leftright = waypoint_position_updown * -1
+                waypoint_position_updown = temp
+                temp = 0
+                print(f"The waypoint turned right 270 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
+    # If waypoint is bottom right
+    elif waypoint_position_leftright >= 0 and waypoint_position_updown <= 0:
         # If command is turn left
         if current_direction_need == left:
             # If turn is 90 degrees
             if current_number == 90:
-                current_direction = east
-                print("Current direction is East")
+                temp = waypoint_position_leftright
+                waypoint_position_leftright = waypoint_position_updown * -1
+                waypoint_position_updown = temp
+                temp = 0
+                print(f"The waypoint turned left 90 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
             # If turn is 180 degrees
             elif current_number == 180:
-                current_direction = north
-                print("Current direction is North")
+                waypoint_position_leftright = waypoint_position_leftright * -1
+                waypoint_position_updown = waypoint_position_updown * -1
+                print(f"The waypoint turned left 180 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
             # If turn is 270 degrees
             elif current_number == 270:
-                current_direction = west
-                print("Current direction is West")
+                temp = waypoint_position_leftright * -1
+                waypoint_position_leftright = waypoint_position_updown
+                waypoint_position_updown = temp
+                temp = 0
+                print(f"The waypoint turned left 270 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
         # If command is turn right
         elif current_direction_need == right:
             # If turn is 90 degrees
             if current_number == 90:
-                current_direction = west
-                print("Current direction is West")
+                temp = waypoint_position_leftright * -1
+                waypoint_position_leftright = waypoint_position_updown
+                waypoint_position_updown = temp
+                temp = 0
+                print(f"The waypoint turned right 90 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
             # If turn is 180 degrees
             elif current_number == 180:
-                current_direction = north
-                print("Current direction is North")
+                waypoint_position_leftright = waypoint_position_leftright * -1
+                waypoint_position_updown = waypoint_position_updown * -1
+                print(f"The waypoint turned right 180 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
             # If turn is 270 degrees
             elif current_number == 270:
-                current_direction = east
-                print("Current direction is East")
-        # If command is go forward
-        elif current_direction_need == forward:
-            current_position_updown = current_position_updown - current_number
-            print(f"Ship went forward to {current_position_updown}")
+                temp = waypoint_position_leftright
+                waypoint_position_leftright = waypoint_position_updown * -1
+                waypoint_position_updown = temp
+                temp = 0
+                print(f"The waypoint turned right 270 degrees to ({waypoint_position_leftright}, {waypoint_position_updown})")
+
+    if current_direction_need == forward:
+        temp = 0
+        while temp != current_number:
+            print(current_number, temp)
+            current_position_updown = current_position_updown + waypoint_position_updown
+            current_position_leftright = current_position_leftright + waypoint_position_leftright
+            temp = temp + 1
+            print(f"Ship went forward to ({current_position_leftright}, {current_position_updown})")
 
     # If command is east
     if current_direction_need == "E":
-        current_position_leftright = current_position_leftright + current_number
-        print(f"Ship went East to {current_position_leftright}")
+        waypoint_position_leftright = waypoint_position_leftright + current_number
+        print(f"Waypoint went East to {waypoint_position_leftright}")
     # If command is west
     elif current_direction_need == "W":
-        current_position_leftright = current_position_leftright - current_number
-        print(f"Ship went West to {current_position_leftright}")
+        waypoint_position_leftright = waypoint_position_leftright - current_number
+        print(f"Waypoint went West to {waypoint_position_leftright}")
     # If command is north
     elif current_direction_need == "N":
-        current_position_updown = current_position_updown + current_number
-        print(f"Ship went North to {current_position_updown}")
+        waypoint_position_updown = waypoint_position_updown + current_number
+        print(f"Waypoint went North to {waypoint_position_updown}")
     # If command is south
     elif current_direction_need == "S":
-        current_position_updown = current_position_updown - current_number
-        print(f"Ship went South to {current_position_updown}")
+        waypoint_position_updown = waypoint_position_updown - current_number
+        print(f"Waypoint went South to {waypoint_position_updown}")
 
     line_no = line_no + 1
 
