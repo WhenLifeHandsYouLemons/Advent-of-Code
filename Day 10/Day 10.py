@@ -14,6 +14,8 @@ with open("C:/Users/2005s/Documents/Visual Studio Code/Advent-of-Code-2020/Day 1
         all_jolts.append(int(line))
 print(all_jolts)
 
+length = len(all_jolts)
+
 all_jolts.sort()
 
 print(all_jolts)
@@ -37,3 +39,13 @@ print(len(all_jolts))
 print("")
 print(f"The 1-jolt difference is {one_difference}, the 3-jolt difference is {three_difference}.")
 print(f"The product of 1-jolt and 3-jolt difference is {product}")
+
+print(all_jolts)
+line_no = 0
+while line_no != length:
+    all_jolts.append(str(all_jolts[0]))
+    all_jolts.pop(0)
+    line_no = line_no + 1
+save = "\n".join(all_jolts)
+with open("C:/Users/2005s/Documents/Visual Studio Code/Advent-of-Code-2020/Day 10/Day 10 Resources.txt", "w") as f:
+    f.write(save)
