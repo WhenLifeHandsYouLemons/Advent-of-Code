@@ -9,7 +9,14 @@ current_number = 0
 temp = 0
 #print(all_lines[0], all_lines[1], all_lines[2])
 
-while turn_no-1 != 2020:
+with open("C:/Users/2005s/Documents/Visual Studio Code/Advent-of-Code-2020/Day 15/Day 15 Other Resources.txt", "r") as f:
+    content = f.read()
+    lines = content.splitlines()
+    for line in lines:
+        starting_numbers.append(int(line))
+        all_lines.append(int(line))
+
+while turn_no-1 != 30000000:
 #    print(f"It's turn number {turn_no}.")
     current_number = int(all_lines[len(all_lines)-1])
 #    print(current_number)
@@ -36,6 +43,16 @@ while turn_no-1 != 2020:
         if temp >= 10000:
             print(all_lines)
             print(f"It's turn number {turn_no}.")
+            temp = 0
+            length = len(all_lines)
+            while temp != length:
+                all_lines.append(str(all_lines[0]))
+                all_lines.pop(0)
+                temp = temp + 1
+            print(all_lines)
+            save = "\n".join(all_lines)
+            with open("C:/Users/2005s/Documents/Visual Studio Code/Advent-of-Code-2020/Day 15/Day 15 Other Resources.txt", "w") as f:
+                f.write(save)
             temp = 0
     else:
         all_lines.append(current_number)
