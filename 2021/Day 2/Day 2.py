@@ -14,6 +14,7 @@ print(all_lines)
 
 horizontal = 0
 depth = 0
+aim = 0
 
 while line_no != len(all_lines):
     current_line = all_lines[line_no].split(" ")
@@ -21,10 +22,11 @@ while line_no != len(all_lines):
     current_units = int(current_line[1])
     if current_command == "forward":
         horizontal = horizontal + current_units
+        depth = depth + (aim * current_units)
     elif current_command == "down":
-        depth = depth + current_units
+        aim = aim + current_units
     elif current_command == "up":
-        depth = depth - current_units
+        aim = aim - current_units
     line_no = line_no + 1
 
 print(horizontal)
