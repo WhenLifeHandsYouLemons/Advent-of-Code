@@ -69,23 +69,23 @@ while line_no != len(all_lines):
             elif x1 > x2:
                 x1 = x1 - 1
     # Coords are diagonals
-    # else:
-    #     checking = True
-    #     while checking == True:
-    #         current_row = grid[y1]
-    #         past_no = current_row[x1]
-    #         current_row.pop(x1)
-    #         current_row.insert(x1, past_no+1)
-    #         if y1 == y2 and x1 == x2:
-    #             checking = False
-    #         elif y1 < y2:
-    #             y1 = y1 + 1
-    #         elif y1 > y2:
-    #             y1 = y1 - 1
-    #         if x1 < x2:
-    #             x1 = x1 + 1
-    #         elif x1 > x2:
-    #             x1 = x1 - 1
+    else:
+        checking = True
+        while checking == True:
+            current_row = grid[y1]
+            past_no = current_row[x1]
+            current_row.pop(x1)
+            current_row.insert(x1, past_no+1)
+            if y1 == y2 and x1 == x2:
+                checking = False
+            elif y1 < y2:
+                y1 = y1 + 1
+            elif y1 > y2:
+                y1 = y1 - 1
+            if x1 < x2:
+                x1 = x1 + 1
+            elif x1 > x2:
+                x1 = x1 - 1
 
     line_no = line_no + 1
 
