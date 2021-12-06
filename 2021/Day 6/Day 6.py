@@ -12,22 +12,20 @@ with open("C:/Users/2005s/Desktop/Advent-of-Code/2021/Day 6/Day 6 Resources.txt"
     for line in lines:
         all_lines.append(line)
 
-all_fish = all_lines[0].split(",")
-
 # Split the inputs into seperate ints
+all_fish = all_lines[0].split(",")
 while line_no != len(all_fish):
     temp_fish = int(all_fish[line_no])
     all_fish.pop(line_no)
     all_fish.insert(line_no, temp_fish)
     line_no = line_no + 1
-# print(all_fish)
 
 # Go through each day
 total_days = 200
 def days(day, life):
     # Base cases
-    # if day == 0 and life == -1:
-    #     return 1
+    if day == 0 and life == -1:
+        return 1
     if life == -1:
         return days(day, 8) + days(day, 6)
     elif day == 0:
