@@ -23,38 +23,20 @@ while line_no != len(all_fish):
 # print(all_fish)
 
 # Go through each day
-day = 0
-while day != 256:
-    # Go through each fish and change the value
-    changing = True
-    current_fish = 0
+total_days = 200
+def days(day, life):
+    # Base cases
+    # if day == 0 and life == -1:
+    #     return 1
+    if life == -1:
+        return days(day, 8) + days(day, 6)
+    elif day == 0:
+        return 1
+    # Any other case
+    else:
+        return days(day-1, life-1)
 
-    new_fish = []
-
-    while changing == True:
-        # Remove one
-        temp_fish = all_fish[current_fish]
-        all_fish.pop(current_fish)
-        all_fish.insert(current_fish, temp_fish-1)
-
-        # Check if the fish life is -1
-        if all_fish[current_fish] == -1:
-            new_fish.append(8)
-            all_fish.pop(current_fish)
-            all_fish.insert(current_fish, 6)
-
-        # Go to next fish
-        current_fish = current_fish + 1
-
-        # Check if all fish are checked for today
-        if current_fish == len(all_fish):
-            changing = False
-
-    for fish in new_fish:
-        all_fish.append(fish)
-
-    day = day + 1
-
-total_fish = len(all_fish)
-
+total_fish = 0
+for fish in all_fish:
+    total_fish = total_fish + days(total_days+1, fish)
 print(total_fish)
