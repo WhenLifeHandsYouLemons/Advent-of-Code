@@ -21,7 +21,7 @@ while line_no != len(all_fish):
     line_no = line_no + 1
 
 # Go through each day
-total_days = 200
+total_days = 256
 def days(day, life):
     # Base cases
     if day == 0 and life == -1:
