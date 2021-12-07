@@ -41,7 +41,7 @@ while numbers_done == False:
     crab_check = True
     current_crab = 0
     total_fuel = 0
-    
+
     while crab_check == True:
         # Part 1
         if all_crabs[current_crab] < current_number:
