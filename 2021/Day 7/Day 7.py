@@ -14,7 +14,7 @@ with open("2021/Day 7/Day 7 Resources.txt", "r") as f:
 print(all_lines)
 all_crabs = all_lines[0].split(",")
 
-# Convert to int from string
+# Convert to int from string and find the mean
 converting = 0
 while converting < len(all_crabs):
     temp = int(all_crabs[converting])
@@ -22,9 +22,19 @@ while converting < len(all_crabs):
     all_crabs.insert(converting, temp)
     converting = converting + 1
 
-# Check each number possible
+converting = 0
+mean = 0
+while converting < len(all_crabs):
+    mean = mean + all_crabs[converting]
+    converting = converting + 1
+
+mean = round(mean / len(all_crabs))
+
+# Check numbers close to the mean
+minimum_number = mean - 10
+maximum_number = mean + 10
 numbers_done = False
-current_number = 0
+current_number = minimum_number
 all_fuel_used = []
 while numbers_done == False:
     # Check all crabs with current number
@@ -57,7 +67,7 @@ while numbers_done == False:
 
     all_fuel_used.append(total_fuel)
 
-    if current_number == 1900:
+    if current_number == maximum_number:
         numbers_done = True
 
     current_number = current_number + 1
