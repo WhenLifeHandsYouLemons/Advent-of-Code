@@ -65,7 +65,7 @@ while numbers_done == False:
 print(all_fuel_used)
 
 check_least = 0
-lowest_fuel = 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+lowest_fuel = 1000000000
 best = 0
 while check_least < len(all_fuel_used):
     if all_fuel_used[check_least] < lowest_fuel:
