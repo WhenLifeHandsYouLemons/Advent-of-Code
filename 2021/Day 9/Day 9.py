@@ -195,8 +195,4 @@ def part_1():
 
     return risk_level
 
-def part_2():
-    print('TOO HARD')
-
-# print("Part 1: ", part_1())
-part_2()
+print("Part 1: ", part_1())
