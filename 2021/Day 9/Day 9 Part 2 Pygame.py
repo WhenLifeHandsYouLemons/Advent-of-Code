@@ -14,29 +14,19 @@ import sys
 import pygame
 
 """
-FILE SEARCHING USED IN '.exe' FORMAT
-"""
-def get_true_filename(filename):
-    try:
-        base = sys._MEIPASS
-    except Exception:
-        base = os.path.abspath('.')
-    return os.path.join(base, filename)
-
-"""
 APP WINDOW
 """
 bg_colour = 255, 0, 0
-window_height = 500
-window_width = 500
+window_height = 200
+window_width = window_height
 WIN = pygame.display.set_mode((window_width, window_height))
 WIN.fill(bg_colour)
 
 """
 VARIABLES
 """
-threshold = 9
-scale = 5
+threshold = 1
+scale = window_height/100
 shift_x = 0
 shift_y = 0
 all_lines = []
@@ -63,7 +53,7 @@ while RUNNING_WINDOW == True:
 
     keys = pygame.key.get_pressed()
     mouse = pygame.mouse.get_pos()
-    print(mouse[0], mouse[1])
+    # print(mouse[0], mouse[1])
 
     row_no = 0
     while row_no < len(all_lines):
@@ -77,9 +67,9 @@ while RUNNING_WINDOW == True:
         column_no = 0
         while column_no < len(row):
             current_no = int(row[column_no])
-            if current_no >= threshold:
-                current_no = 9
-            pygame.draw.rect(WIN, (current_no*28, current_no*28, 255), ((column_no+shift_x)*scale, (row_no+shift_y)*scale, scale, scale))
+            if current_no <= threshold:
+                current_no = 0
+            pygame.draw.rect(WIN, (current_no*28, current_no*28, current_no*28), ((column_no+shift_x)*scale, (row_no+shift_y)*scale, scale, scale))
             column_no += 1
 
         row_no += 1
@@ -91,5 +81,10 @@ while RUNNING_WINDOW == True:
             RUNNING_WINDOW = False
             pygame.quit()
             sys.exit()
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_s:
+                print("Took screenshot!")
+                pygame.image.save(WIN,"Day 9 Amazingness.jpg")
 
 sys.exit()

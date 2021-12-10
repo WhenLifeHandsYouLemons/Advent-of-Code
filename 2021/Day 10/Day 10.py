@@ -151,9 +151,55 @@ def part_2():
             remove += 1
 
     # Go backwards through new_list and see what there is to complete
+    all_additions = []
+    go_in = 0
+    while go_in != len(new_list):
+        current_line = new_list[go_in]
+        go = len(current_line)-1
+        temp_additions = []
+        while go >= 0:
+            if current_line[go] == "(":
+                temp_additions.append(")")
+            elif current_line[go] == "{":
+                temp_additions.append("}")
+            elif current_line[go] == "[":
+                temp_additions.append("]")
+            elif current_line[go] == "<":
+                temp_additions.append(">")
 
-    print(new_list)
+            go -= 1
+
+        all_additions.append(temp_additions)
+        go_in += 1
+
+    # Go through all_additions and add up the total
+    add_in = 0
+    totals = []
+    while add_in != len(all_additions):
+        current_line = all_additions[add_in]
+        add = 0
+        temp_total = 0
+
+        while add != len(current_line):
+            if current_line[add] == ")":
+                temp_total = (temp_total * 5) + 1
+            elif current_line[add] == "]":
+                temp_total = (temp_total * 5) + 2
+            elif current_line[add] == "}":
+                temp_total = (temp_total * 5) + 3
+            elif current_line[add] == ">":
+                temp_total = (temp_total * 5) + 4
+
+            add += 1
+
+        totals.append(temp_total)
+
+        add_in += 1
+
+    totals = sorted(totals, reverse=False)
+    middle_no = totals[int((len(totals)-1)/2)]
+    return middle_no
 
 
-# print("Part 1: ", part_1())
-part_2()
+print("Part 1: ", part_1())
+print("Part 2: ", part_2())
