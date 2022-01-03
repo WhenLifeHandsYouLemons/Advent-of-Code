@@ -2,6 +2,14 @@
 Advent of Code: Day 13
 """
 
+def print_paper(full_paper):
+    for r in range(0, len(full_paper)):
+        for c in range(0, len(full_paper[r])):
+            print(full_paper[r][c], end="")
+        print()
+    print()
+
+
 all_lines = []
 line_no = 0
 
@@ -42,6 +50,7 @@ while row_no != 1000:
         column_no += 1
     row_no += 1
 
+print("Creating array")
 max_row = max_row
 max_column = max_column
 row_no = 0
@@ -67,15 +76,17 @@ while row_no != max_row+1:
 
     row_no += 1
 
+print("Doing folds")
 # Do all folds
 for current_instruction in instructions:
     # Print needed part of paper
-    i = 0
-    while i != 7:
-        row = full_paper[i]
-        print(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12], row[13], row[14], row[15], row[16], row[17], row[18], row[19], row[20], row[21], row[22], row[23], row[24], row[25], row[26], row[27], row[28], row[29], row[30], row[31], row[32], row[33], row[34], row[35], row[36], row[37], row[38], row[39])
+    print_paper(full_paper)
+    #i = 0
+    #while i != 7:
+    #    row = full_paper[i]
+        # print(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12], row[13], row[14], row[15], row[16], row[17], row[18], row[19], row[20], row[21], row[22], row[23], row[24], row[25], row[26], row[27], row[28], row[29], row[30], row[31], row[32], row[33], row[34], row[35], row[36], row[37], row[38], row[39])
         # print(row[0], row[1], row[2], row[3], row[4])
-        i += 1
+    #    i += 1
 
     # FOr example
     # for row in full_paper:
@@ -146,6 +157,9 @@ for current_instruction in instructions:
             row_no += 1
 
 # Print needed part of paper
+print_paper(full_paper)
+
+exit()
 i = 0
 while i != 7:
     row = full_paper[i]
