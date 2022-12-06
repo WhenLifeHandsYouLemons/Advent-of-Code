@@ -12,19 +12,13 @@ with open("2022/Day 3/data.txt", "r") as f:
         all_lines.append(line)
 
 total = 0
-while line_no != len(all_lines):
+
+while line_no <= len(all_lines)-2:
     all_doubles = []
-    # Split into two halves
-    first_half = []
-    for i in range(int(len(all_lines[line_no])/2)):
-        first_half.append(all_lines[line_no][i])
-    second_half = []
-    for i in range(int(len(all_lines[line_no])/2), int(len(all_lines[line_no]))):
-        second_half.append(all_lines[line_no][i])
 
     # Check if there's any duplicates across halves
-    for i in first_half:
-        if i in second_half:
+    for i in all_lines[line_no]:
+        if i in all_lines[line_no+1] and i in all_lines[line_no+2]:
             if i not in all_doubles:
                 all_doubles.append(i)
 
@@ -35,6 +29,6 @@ while line_no != len(all_lines):
         elif i.islower():
             total += ord(i) - 96
 
-    line_no = line_no + 1
+    line_no = line_no + 3
 
 print(total)
