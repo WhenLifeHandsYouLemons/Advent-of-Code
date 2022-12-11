@@ -3,16 +3,6 @@ Advent of Code: Day 11
 """
 from math import floor
 from Monkey import Monkey
-from Item import Item
-
-all_lines = []
-line_no = 0
-
-with open("2022/Day 11/data.txt", "r") as f:
-    content = f.read()
-    lines = content.splitlines()
-    for line in lines:
-        all_lines.append(line)
 
 # Create monkeys
 monkeys = [
@@ -26,52 +16,43 @@ monkeys = [
     Monkey([50, 66, 61, 92, 64, 78], "+", 3, 2, 5, 1)
 ]
 
-rounds = 20
+# Example data
+# monkeys = [
+#     Monkey([79, 98], "*", 19, 23, 2, 3),
+#     Monkey([54, 65, 75, 74], "+", 6, 19, 2, 0),
+#     Monkey([79, 60, 97], "*", "old", 13, 1, 3),
+#     Monkey([74], "+", 3, 17, 0, 1)
+# ]
+
+modulus = 1
+for i in monkeys:
+    modulus *= i.test
+
+rounds = 10000
+seperate = 1
 for round in range(rounds):
     for monkey in monkeys:
         while len(monkey.items) != 0:
             # Change worry level
-            if monkey.operation == "*":
-                try:
-                    amount = int(monkey.operation_amount)
-                    item_worry_level = monkey.removeItem() * amount
-                except ValueError:
-                    item_worry_level = monkey.removeItem() ** 2
-            elif monkey.operation == "+":
-                try:
-                    amount = int(monkey.operation_amount)
-                    item_worry_level = monkey.removeItem() + amount
-                except ValueError:
-                    item_worry_level = monkey.removeItem() * 2
-            elif monkey.operation == "/":
-                try:
-                    amount = int(monkey.operation_amount)
-                    item_worry_level = monkey.removeItem() / amount
-                except ValueError:
-                    item_worry_level = 1
-            elif monkey.operation == "-":
-                try:
-                    amount = int(monkey.operation_amount)
-                    item_worry_level = monkey.removeItem() - amount
-                except ValueError:
-                    item_worry_level = 0
-
-            item_worry_level = floor(item_worry_level / 3)
+            try:
+                amount = int(monkey.operation_amount)
+                item_worry_level = eval(f"{monkey.removeItem()} {monkey.operation} {amount}")
+            except ValueError:
+                amount = monkey.removeItem()
+                item_worry_level = eval(f"{amount} {monkey.operation} {amount}")
 
             # Check if test passes and pass item
             if item_worry_level % monkey.test == 0:
-                monkeys[monkey.test_true].addItem(item_worry_level)
+                monkeys[monkey.test_true].addItem(item_worry_level % modulus)
             else:
-                monkeys[monkey.test_false].addItem(item_worry_level)
+                monkeys[monkey.test_false].addItem(item_worry_level % modulus)
 
             monkey.count += 1
-
-# for monkey in monkeys:
-#     print(monkey.items)
 
 counts = []
 for monkey in monkeys:
     counts.append(monkey.count)
+    # print(monkey.count)
 
 max_val = max(counts)
 counts.remove(max(counts))
