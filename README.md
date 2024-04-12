@@ -1,3 +1,3 @@
-# Advent of Code 2020
+# Advent of Code
 
- This repository contains all of the code I wrote for the Advent of Code challenges!
+This repository contains all of the code I wrote for the Advent of Code challenges!
