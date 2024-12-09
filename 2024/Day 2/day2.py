@@ -53,16 +53,6 @@ def part2():
     global all_lines
     line_no = 0
 
-    # def isDampened(change, pprev, prev, cur) -> bool:
-    #     if change == "increase" and pprev > cur:
-    #         return False
-    #     elif change == "decrease" and pprev < cur:
-    #         return False
-    #     elif abs(max(pprev, cur) - min(pprev, cur)) > 3 or abs(max(pprev, cur) - min(pprev, cur)) < 1:
-    #         return False
-
-    #     return True
-
     def checkLevel(levels: list, dampened: bool):
         change = None
 
@@ -109,8 +99,10 @@ def part2():
         cur_level = line.split(" ")
 
         # Check if the current row of levels are safe
-        if checkLevel(cur_level, False):
+        if checkLevel(cur_level, False) or checkLevel(cur_level[1:], True):
             total_safe += 1
+        else:
+            print(cur_level)
 
         line_no += 1
 
