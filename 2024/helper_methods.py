@@ -1,18 +1,31 @@
 import math
 
-def gridPrint(grid: list, join: bool = False) -> None:
+def gridPrint(grid: list[list], newline: bool = False, join_row: bool = False, join_all: bool = False) -> None:
     """Prints the given grid in a cleaner way to the running console.
 
     Args:
         grid (list): The grid to print out.
-        join (bool, optional): Whether each line should be printed as a list or joined together into a string. Defaults to False.
+        newline (bool, optional): Whether a new line should be printed before the entire grid. Defaults to False.
+        join_row (bool, optional): Whether each row should be printed as a list or joined together into a string. The rows are still printed separately. Defaults to False.
+        join_all (bool, optional): Whether the entire grid should be printed as a single string. This ignores the value of join_row, if given. Defaults to False.
     """
-    print()
-    for i in grid:
-        if join:
-            print("".join(i))
-        else:
-            print(i)
+    if newline:
+        print()
+
+    if join_all:
+        print_str = ""
+        for i in grid:
+            k = [str(j) for j in i]
+            print_str = f"{print_str}{''.join(k)}"
+
+        print(print_str)
+    else:
+        for i in grid:
+            if join_row:
+                k = [str(j) for j in i]
+                print("".join(k))
+            else:
+                print(i)
 
 def arrayPrint(ar: list, newline: bool = False, separate: bool = False, spacing: str = "") -> None:
     """Prints the given array in a cleaner way to the running console.
