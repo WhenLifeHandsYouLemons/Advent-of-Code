@@ -1,12 +1,12 @@
 import math
 
-def gridPrint(grid: list[list], newline: bool = False, join_row: bool = False, join_all: bool = False) -> None:
+def gridPrint(grid: list[list], newline: bool = True, join_row: bool = True, join_all: bool = False) -> None:
     """Prints the given grid in a cleaner way to the running console.
 
     Args:
         grid (list): The grid to print out.
-        newline (bool, optional): Whether a new line should be printed before the entire grid. Defaults to False.
-        join_row (bool, optional): Whether each row should be printed as a list or joined together into a string. The rows are still printed separately. Defaults to False.
+        newline (bool, optional): Whether a new line should be printed before the entire grid. Defaults to True.
+        join_row (bool, optional): Whether each row should be printed as a list or joined together into a string. The rows are still printed separately. Defaults to True.
         join_all (bool, optional): Whether the entire grid should be printed as a single string. This ignores the value of join_row, if given. Defaults to False.
     """
     if newline:
